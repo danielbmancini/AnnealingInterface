@@ -23,7 +23,7 @@ public class MinimizeQuadratic extends Arrefecimento<Integer> {
     @Override
     public Integer solutionPerturber(Integer solution){
         Random random = new Random();
-        int randomOffset = random.nextBoolean() ? 1 : -1;
+        int randomOffset = random.nextBoolean() ? 5 : -5;
         return  java.lang.Integer.valueOf((int) (solution +  2*random.nextDouble()*randomOffset));
 
     }
