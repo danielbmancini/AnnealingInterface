@@ -14,7 +14,7 @@ public abstract class Arrefecimento<T> {
         Random random = new Random();
         double eval = evaluator(s) - evaluator(solution);
 
-        if (eval < 0)
+        if (eval > 0)
             return solution;
 
         return Math.exp(-eval / temperature) > random.nextDouble() ? solution : s;
@@ -49,10 +49,10 @@ public abstract class Arrefecimento<T> {
             System.out.println(solution);
             solution2 = solutionPerturber(solution);
 
-            solution = evaluateSolution(solution2,solution2,temperature);
+            solution = evaluateSolution(initialSolution,solution2,temperature);
             // Update the temperature
             temperature = coolingSchedule(temperature);
-
+            System.out.println("temp = " + temperature);
             // Check the stopping condition
             if (stop(solution))
                 break;

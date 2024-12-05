@@ -17,4 +17,6 @@ Aqui estão algumas implementações da classe `Arrefecimento<T>`:
 
 - **MinimizeQuadratic** ([Classe](https://github.com/danielbmancini/AnnealingInterface/blob/master/src/MinimizeQuadratic.java))  
    * Tenta obter o mínimo global da função descrita em `evaluator(Integer solution)`. (neste caso, `(x-3)² + 4`)
+- **KnapsackProblem** ([Classe](https://github.com/danielbmancini/AnnealingInterface/blob/master/src/KnapsackProblem.java))
+  * Tenta resolver o Problema da Mochila.
 

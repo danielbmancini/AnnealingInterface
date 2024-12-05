@@ -1,13 +1,9 @@
 import java.util.Random;
 
 /*
-* Override:
-* evaluationFunction (Object s)
-* coolingSchedule(int temperature)
-* perturbSolution(Object s)
-* stop(Object solution)
+    Estima o mínimo.
 * */
-public class MinimizeQuadratic<Integer> extends Arrefecimento<Integer> {
+public class MinimizeQuadratic extends Arrefecimento<Integer> {
     //Problema: minimizar (x−3)⁴ + 82 (O minímo deve ser 4 em x = 3)
 
     int min;
@@ -28,24 +24,25 @@ public class MinimizeQuadratic<Integer> extends Arrefecimento<Integer> {
     public Integer solutionPerturber(Integer solution){
         Random random = new Random();
         int randomOffset = random.nextBoolean() ? 1 : -1;
-        return (Integer) java.lang.Integer.valueOf((int) solution +  randomOffset);
+        return  java.lang.Integer.valueOf((int) (solution +  2*random.nextDouble()*randomOffset));
 
     }
 
     @Override
     public int coolingSchedule(int temperature){
-        return (int) (temperature * 0.98);
+        return (int) (temperature * 0.98 );
     }
 
     public static void main(String[] args) {
-        int initialSolution = random.nextInt(20);
-        int temperature = 600;
+        int initialSolution = random.nextInt(10) - 5;
+        int temperature = 400;
         int minTemperature = 1;
 
 
         MinimizeQuadratic minimizeQuadratic = new MinimizeQuadratic();
         minimizeQuadratic.min = minimizeQuadratic.evaluator(initialSolution);
         //anneal(Object initialSolution, int temperature, int minTemperature, Function<Object,Object> solutionPerturber,Function<Integer,Integer> coolingSchedule)
+        minimizeQuadratic.sol = initialSolution;
         System.out.println(minimizeQuadratic.anneal(initialSolution,temperature,minTemperature));
         System.out.println("min = "  + minimizeQuadratic.sol);
     }
