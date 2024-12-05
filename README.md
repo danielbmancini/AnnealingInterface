@@ -2,14 +2,14 @@
 
 Este repositório contém uma implementação genérica (template) do algoritmo de *Simulated Annealing* (Arrefecimento Simulado),
 projetada para ser extensível e aplicável a diferentes problemas de otimização. Ele fornece uma classe abstrata chamada
-`Arrefecimento`, que define o esqueleto do algoritmo, enquanto problemas específicos podem ser implementados como
+`Arrefecimento<T>`, que define o esqueleto do algoritmo, enquanto problemas específicos podem ser implementados como
 classes derivadas.
 
 ## Estrutura do Projeto
 
-### Classe Base: `Arrefecimento`
+### Classe Base: `Arrefecimento<T>`
 
-A classe abstrata `Arrefecimento` encapsula os elementos principais do algoritmo de arrefecimento simulado, incluindo:
+A classe abstrata `Arrefecimento<T>` faz operações com o tipo T (exemplo, Integer no caso de minimização de função numérica) e encapsula os elementos principais do algoritmo de arrefecimento simulado, incluindo:
 
 #### **Método `anneal`**
 
@@ -47,15 +47,15 @@ a perturbada, ajustada pela temperatura.
 
 Os seguintes métodos devem ser implementados pelas classes derivadas para adaptarem-se a problemas específicos:
 
-1. **`stop(Object solution)`**  
+1. **`stop(T solution)`**  
    Define a condição de parada do algoritmo.
     - Retorna `true` para parar o processo, `false` caso contrário.
 
-2. **`solutionPerturber(Object solution)`**  
+2. **`solutionPerturber(T solution)`**  
    Aplica uma perturbação à solução atual.
 
 3. **`coolingSchedule(int temperature)`**  
    Define a estratégia de resfriamento para reduzir a temperatura.
 
-4. **`evaluator(Object solution)`**  
+4. **`evaluator(T solution)`**  
    Avalia a qualidade de uma solução específica (*fitness function*).
