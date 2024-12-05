@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public abstract class Arrefecimento {
+public abstract class Arrefecimento<T> {
 
     /**
      * Evaluate whether a solution should be accepted based on the given parameters.
@@ -10,7 +10,7 @@ public abstract class Arrefecimento {
      * @param temperature The current temperature.
      * @return The selected solution.
      */
-    public Object evaluateSolution(Object solution, Object s, int temperature) {
+    public T evaluateSolution(T solution, T s, int temperature) {
         Random random = new Random();
         double eval = evaluator(s) - evaluator(solution);
 
@@ -26,7 +26,9 @@ public abstract class Arrefecimento {
      * @param solution The current solution.
      * @return True if the annealing process should stop; false otherwise.
      */
-    public abstract boolean stop(Object solution);
+    public abstract boolean stop(T solution);
+
+    public abstract int evaluator(T solution);
 
     /**
      * Perform simulated annealing to optimize a solution.
@@ -35,11 +37,11 @@ public abstract class Arrefecimento {
      * @return perturbed solution.
      */
 
-    public abstract Object solutionPerturber(Object solution);
+    public abstract T solutionPerturber(T solution);
 
-    public Object anneal(Object initialSolution, int temperature, int minTemperature) {
-        Object solution = initialSolution;
-        Object solution2;
+    public T anneal(T initialSolution, int temperature, int minTemperature) {
+        T solution = initialSolution;
+        T solution2;
 
         while (temperature > minTemperature) {
             // Perturb the solution and evaluate
@@ -64,5 +66,4 @@ public abstract class Arrefecimento {
 
     public abstract int coolingSchedule(int temperature);
 
-    public abstract int evaluator(Object solution);
 }

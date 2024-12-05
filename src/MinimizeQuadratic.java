@@ -1,5 +1,5 @@
 import java.util.Random;
-import java.util.function.Function;
+
 /*
 * Override:
 * evaluationFunction (Object s)
@@ -7,15 +7,15 @@ import java.util.function.Function;
 * perturbSolution(Object s)
 * stop(Object solution)
 * */
-public class MinimizeQuadratic extends Arrefecimento {
+public class MinimizeQuadratic<Integer> extends Arrefecimento<Integer> {
     //Problema: minimizar (x−3)⁴ + 82 (O minímo deve ser 4 em x = 3)
 
     int min;
-    Object sol;
+    Integer sol;
     static Random random = new Random();
 
     @Override
-    public int evaluator(Object solution){
+    public int evaluator(Integer solution){
         int val = (int) Math.pow(((int) solution - 3),4) + 4;
         if(min > val){
             min = val;
@@ -25,10 +25,10 @@ public class MinimizeQuadratic extends Arrefecimento {
     }
 
     @Override
-    public Object solutionPerturber(Object solution){
+    public Integer solutionPerturber(Integer solution){
         Random random = new Random();
         int randomOffset = random.nextBoolean() ? 1 : -1;
-        return (int) solution + randomOffset;
+        return (Integer) java.lang.Integer.valueOf((int) solution +  randomOffset);
 
     }
 
@@ -53,7 +53,7 @@ public class MinimizeQuadratic extends Arrefecimento {
 
 
     @Override
-    public boolean stop(Object solution){
+    public boolean stop(Integer solution){
         return false;
     }
 }
