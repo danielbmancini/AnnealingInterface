@@ -64,6 +64,6 @@ Os seguintes métodos devem ser implementados pelas classes derivadas para adapt
 
 Aqui estão algumas implementações da classe `Arrefecimento<T>`:
 
-- **MinimizeQuadrativa** ([Classe](https://github.com/danielbmancini/AnnealingInterface/blob/master/src/MinimizeQuadratic.java))  
+- **MinimizeQuadratic** ([Classe](https://github.com/danielbmancini/AnnealingInterface/blob/master/src/MinimizeQuadratic.java))  
    * Tenta obter o mínimo global da função descrita em `evaluator(Integer solution)`. (neste caso, `(x-3)² + 4`)
 
