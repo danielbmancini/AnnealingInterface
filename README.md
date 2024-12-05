@@ -1,4 +1,4 @@
-# Simulated Annealing Generalist Framework
+# Framework para simulated annealing
 
 Este repositório contém uma implementação genérica (template) do algoritmo de *Simulated Annealing* (Arrefecimento Simulado),
 projetada para ser extensível e aplicável a diferentes problemas de otimização. Ele fornece uma classe abstrata chamada
